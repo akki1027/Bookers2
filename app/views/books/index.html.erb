@@ -1,14 +1,14 @@
 
 <div class="left-container">
 <!-- ユーザーインフォ -->
-	<div class="user_info">
+	<div class="user-info">
 		<h1>User info</h1>
 		<div class="profile-picture">
 			<%= attachment_image_tag post_image.user, :profile_image, :fill, 60, 60, fallback: "no_image.jpg", class: "img-square pull-left profile-thumb" %>
 		</div>
 		<ul>
 			<!-- 編集が必要 -->
-			<li>name<%= @post_image.user.name %></li>
+			<li class="user-info-list">name<%= @post_image.user.name %></li>
 			<h4>introduction</h4>
 		</ul>
 		<div class="user_info_setting"></div>
