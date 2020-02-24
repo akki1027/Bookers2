@@ -22,7 +22,7 @@
 						</tbody>
 					</table>
 					<div class="row">
-						<%= link_to users_edit_path(@user) do %>
+						<%= link_to edit_user_path(@user) do %>
 							<button class="btn btn-default col-xs-12"><span class="glyphicon glyphicon-wrench"></span></button>
 						<% end %>
 					</div>
@@ -71,7 +71,7 @@
 							<tr>
 								<td><!-- ユーザーアイコン --></td>
 								<td><%= link_to book.title, book_path(book) %></td>
-								<td><%= book.opinion %></td>
+								<td><%= book.body %></td>
 								<td></td>
 								<td></td>
 								<td></td>
