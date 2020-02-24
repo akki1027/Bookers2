@@ -1,2 +1,84 @@
-<h1>Books#show</h1>
-<p>Find me in app/views/books/show.html.erb</p>
+<body>
+	<div class="container">
+		<div class="row">
+			<div class="col-xs-3">
+			<!-- ユーザーインフォ -->
+				<div class="user-info">
+					<h2>User info</h2>
+					<div class="profile-picture">
+
+					</div>
+					<table class="table">
+						<tbody>
+							<tr><!-- ここにuser profile --></tr>
+							<tr>
+								<th>name</th>
+								<th><%= @user.name %></th>
+							</tr>
+							<tr>
+								<th>introduction</th>
+								<th><%= @introduction %></th>
+							</tr>
+						</tbody>
+					</table>
+					<div class="row">
+						<%= link_to edit_user_path(@user) do %>
+							<button class="btn btn-default col-xs-12"><span class="glyphicon glyphicon-wrench"></span></button>
+						<% end %>
+					</div>
+				</div>
+			<!-- ここまでユーザーインフォ -->
+			<!-- New Bookのエリア -->
+				<div class="new-book">
+					<h2>New book</h2>
+					<!-- New Bookのフォーム -->
+					<%= form_for(@book) do |f| %>
+						<div class="field row">
+							<%= f.label :title, "Title" %>
+							<div class="field-error">
+								<%= f.text_field :title, class:"col-xs-12" %>
+							</div>
+						</div>
+						<div class="field row">
+							<%= f.label :body, "Opinion" %>
+							<div class="field-error">
+								<%= f.text_area :body, class:"col-xs-12" %>
+							</div>
+						</div>
+						<div class="field row">
+							<%= f.submit 'Create Book', class:"btn btn-primary col-xs-12"%>
+						</div>
+					<% end %>
+					<!-- ここまでNew Bookのフォーム -->
+				</div>
+			<!-- ここまでNew Bookのエリア -->
+			</div>
+
+			<!-- 右側のテーブル -->
+			<div class="col-xs-9">
+				<h2>Books</h2>
+				<table class="table table-hover table-inverse">
+					<thead>
+						<tr>
+							<th><!-- 空白 --></th>
+							<th>Title</th>
+							<th>Opinion</th>
+							<th colspan="3"></th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><!-- ユーザーアイコン --></td>
+							<td><%= link_to @title, book_path %></td>
+							<td><%= @body %></td>
+							<td></td>
+							<td></td>
+							<td></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<!-- ここまで右側のテーブル -->
+		</div>
+	</div>
+</body>
