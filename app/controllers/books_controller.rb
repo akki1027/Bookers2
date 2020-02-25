@@ -7,7 +7,8 @@ class BooksController < ApplicationController
 
   def show
   	@book = Book.find(params[:id])
-  	@book = Book.new
+  	@book_new = Book.new
+  	# 変更した
   	@user = current_user
   end
 
@@ -29,14 +30,20 @@ class BooksController < ApplicationController
   	@book = Book.find(params[:id])
   end
   def update
-  	book = Book.find(patams[:id])
-  	if book.update(params[:id])
+  	book = Book.find(params[:id])
+  	if book.update(params)
   		flash[:update] = "Book was successfully updated."
   		redirect_to book_path(book)
   	else
   		@books = Book.all
   		render 'index'
   	end
+  end
+
+  def destroy
+  	book = Book.find(params[:id])
+  	book.destroy
+  	redirect_to books_path
   end
 
   	private
