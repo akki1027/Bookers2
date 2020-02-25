@@ -1,1 +1,53 @@
 <!-- made -->
+			<div class="col-xs-3">
+			<!-- ユーザーインフォ -->
+				<div class="user-info">
+					<h2>User info</h2>
+					<div class="profile-picture">
+
+					</div>
+					<table class="table">
+						<tbody>
+							<tr><!-- ここにuser profile --></tr>
+							<tr>
+								<th>name</th>
+								<th><%= @user.name %></th>
+							</tr>
+							<tr>
+								<th>introduction</th>
+								<th><%= @introduction %></th>
+							</tr>
+						</tbody>
+					</table>
+					<div class="row">
+						<%= link_to edit_user_path(@user) do %>
+							<button class="btn btn-default col-xs-12"><span class="glyphicon glyphicon-wrench"></span></button>
+						<% end %>
+					</div>
+				</div>
+			<!-- ここまでユーザーインフォ -->
+			<!-- New Bookのエリア -->
+				<div class="new-book">
+					<h2>New book</h2>
+					<!-- New Bookのフォーム -->
+					<%= form_for(@book) do |f| %>
+						<div class="field row">
+							<%= f.label :title, "Title" %>
+							<div class="field-error">
+								<%= f.text_field :title, class:"col-xs-12" %>
+							</div>
+						</div>
+						<div class="field row">
+							<%= f.label :body, "Opinion" %>
+							<div class="field-error">
+								<%= f.text_area :body, class:"col-xs-12" %>
+							</div>
+						</div>
+						<div class="field row">
+							<%= f.submit 'Create Book', class:"btn btn-primary col-xs-12"%>
+						</div>
+					<% end %>
+					<!-- ここまでNew Bookのフォーム -->
+				</div>
+			<!-- ここまでNew Bookのエリア -->
+			</div>
