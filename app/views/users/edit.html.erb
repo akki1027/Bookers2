@@ -7,10 +7,20 @@
 					<%= f.label :name, "Name" %>
 					<div class="field-error">
 						<%= f.text_field :name %>
+					</div>
 				</div>
 
 				<div class="field">
+					<%= f.label :post_image, "Image" %>
 					<div clas="field-error">
+						<%= f.attachment_field :profile_image, placeholder: "プロファイル画像", class:"user-edit-form" %>
+					</div>
+				</div>
+
+				<div class="field">
+					<%= f.label :introduction, "Introduction" %>
+					<div class="field-error">
+						<%= f.text_area :introduction %>
 					</div>
 				</div>
 
