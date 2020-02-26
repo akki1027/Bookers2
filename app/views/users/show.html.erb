@@ -1,6 +1,13 @@
 <body>
 	<div class="container">
 		<div class="row">
+			<% if flash[:update] %>
+				<div class="flash">
+					<%= flash[:update] %>
+				</div>
+			<% end %>
+		</div>
+		<div class="row">
 			<%= render 'books/list', book: @book, user: @user %>
 
 			<!-- 右側のテーブル -->
