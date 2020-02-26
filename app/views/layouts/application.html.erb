@@ -28,8 +28,7 @@
               <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
                 <% if user_signed_in? %>
                   <li>
-                    <%= link_to " Home", class:"glyphicon glyphicon-home" %>
-                    <!-- link未設定 -->
+                    <%= link_to " Home", user_path(current_user), class:"glyphicon glyphicon-home" %>
                   </li>
                   <li>
                     <%= link_to ' User', users_path, class:"glyphicon glyphicon-user" %>
@@ -42,12 +41,12 @@
                   </li>
                 <% else %>
                   <li>
-                    <%= link_to " Home", books_path, class:"glyphicon glyphicon-home"%>
-                    <!-- link未設定 -->
+                    <%= link_to " Home", root_path, class:"glyphicon glyphicon-home"%>
+                    <!-- 編集が必要 -->
                   </li>
                   <li>
                     <%= link_to ' About', books_path, class:"glyphicon glyphicon-link" %>
-                    <!-- link未設定 -->
+                    <!-- 編集が必要 -->
                   </li>
                   <li>
                     <%= link_to ' sign up', new_user_registration_path, class:"glyphicon glyphicon-edit" %>
