@@ -6,7 +6,11 @@
 					<%= flash[:update] %>
 				</div>
 			<% end %>
+			<div class="notice">
+				<%= flash[:notice] %>
+			</div>
 		</div>
+
 		<div class="row">
 			<%= render 'books/list', book: @book, user: @user %>
 
