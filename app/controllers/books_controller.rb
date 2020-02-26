@@ -9,7 +9,7 @@ class BooksController < ApplicationController
   	@book = Book.find(params[:id])
   	@book_new = Book.new
   	# 変更した
-  	@user = current_user
+  	@user = @book.user
   end
 
   def new
