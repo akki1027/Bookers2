@@ -28,16 +28,14 @@
               <ul class="nav navbar-nav navbar-right" data-hover="dropdown" data-animations="zoomIn fadeIn fadeInUp fadeIn">
                 <% if user_signed_in? %>
                   <li>
-                    <%= link_to " Home", books_path, class:"glyphicon glyphicon-home" %>
+                    <%= link_to " Home", class:"glyphicon glyphicon-home" %>
                     <!-- link未設定 -->
                   </li>
                   <li>
                     <%= link_to ' User', users_path, class:"glyphicon glyphicon-user" %>
-                    <!-- link未設定 -->
                   </li>
                   <li>
                     <%= link_to ' Books', books_path, class:"glyphicon glyphicon-book" %>
-                    <!-- link未設定 -->
                   </li>
                   <li>
                     <%= link_to ' logout', destroy_user_session_path, method: :delete, class:"glyphicon glyphicon-log-out" %>
