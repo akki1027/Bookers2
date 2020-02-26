@@ -6,10 +6,10 @@ class BooksController < ApplicationController
   end
 
   def show
-  	@book = Book.find(params[:id])
-  	@book_new = Book.new
+  	@book_find = Book.find(params[:id])
+  	@book = Book.new
   	# 変更した
-  	@user = @book.user
+  	@user = @book_find.user
   end
 
   def new
@@ -22,7 +22,9 @@ class BooksController < ApplicationController
   	if @book.save
   		redirect_to book_path(@book)
   	else
-  		render 'new'
+  		@books = Book.all
+  		@user = current_user
+  		render 'index'
   	end
   end
 
