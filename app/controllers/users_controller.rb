@@ -12,7 +12,11 @@ class UsersController < ApplicationController
   def update
   	@user = User.find(params[:id])
   	@user.update(user_params)
-  	redirect_to books_path
+  	if @user.save
+  		redirect_to books_path
+  	else
+  		render 'edit'
+  	end
   end
 
   def show
