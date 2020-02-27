@@ -6,6 +6,11 @@
 					<%= flash[:create] %>
 				</div>
 			<% end %>
+			<% if flash[:update] %>
+				<div class="flash">
+					<%= flash[:update] %>
+				</div>
+			<% end %>
 		</div>
 		<div class="row">
 			<%= render 'books/list', book: @book, user: @user %>
@@ -21,7 +26,9 @@
 								<% end %></td>
 							<td><%= link_to @book_find.title, book_path %></td>
 							<td><%= @book_find.body %></td>
-							<td><%= link_to "Edit", edit_book_path, class:"btn-sm btn-success" %></td>
+							<td><% if @user.id == current_user.id %>
+									<%= link_to "Edit", edit_book_path, class:"btn-sm btn-success" %>
+								<% end %></td>
 							<td><% if @book_find.user == current_user %>
 									<%= link_to "Destroy", book_path(@book_find.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn-sm btn-danger" %>
 								<% end %>
