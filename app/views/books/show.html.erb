@@ -26,6 +26,18 @@
 								<% end %></td>
 							<td><%= link_to @book_find.title, book_path %></td>
 							<td><%= @book_find.body %></td>
+							<td><% if @book_find.favorited_by?(current_user) %>
+									<%= link_to book_favorites_path(@book_find), method: :delete do %>
+										<i class="far fa-heart" aria-hidden="true" style="color: red;"></i>
+										<%= @book_find.favorites.count %>
+									<% end %>
+								<% else %>
+									<%= link_to book_favorites_path(@book_find), method: :post do %>
+										<i class="far fa-heart" aria-hidden="true"></i>
+										<%= @book_find.favorites.count %>
+									<% end %>
+								<% end %>
+							</td>
 							<td><% if @user.id == current_user.id %>
 									<%= link_to "Edit", edit_book_path, class:"btn-sm btn-success" %>
 								<% end %></td>
@@ -33,10 +45,49 @@
 									<%= link_to "Destroy", book_path(@book_find.id), method: :delete, "data-confirm" => "本当に消しますか？", class:"btn-sm btn-danger" %>
 								<% end %>
 								</td>
-							<td></td>
+							<td><h5>コメント数 : <%= @book_find.post_comments.count %></h5>
+							</td>
 						</tr>
 					</tbody>
 				</table>
+				<div class="comment-section">
+					<div class="comments">
+						<table class="table table-hover table-inverse">
+							<thead>
+								<tr>
+									<th>name
+									</th>
+									<th>comment
+									</th>
+									<th></th>
+								</tr>
+							</thead>
+							<% @book_find.post_comments.each do |post_comment| %>
+							<tbody>
+								<tr>
+									<td>
+										<strong><%= post_comment.user.name %></strong>
+									</td>
+									<td>
+										<%= post_comment.comment %>
+									</td>
+									<td>
+										<% if post_comment.user == current_user %>
+											<%= link_to "削除", book_post_comments_path(@book_find), method: :delete, "data-confirm" => "本当に削除しますか？", class:"btn-sm btn-danger" %>
+										<% end %>
+									</td>
+								</tr>
+							</tbody>
+							<% end %>
+						</table>
+					</div>
+					<div class="comment-form">
+						<%= form_for [@book_find, @post_comment] do |f| %>
+							<%= f.text_field :comment %>
+							<%= f.submit "送信" %>
+						<% end %>
+					</div>
+				</div>
 			</div>
 			<!-- ここまで右側のテーブル -->
 		</div>
