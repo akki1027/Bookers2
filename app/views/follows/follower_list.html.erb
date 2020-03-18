@@ -1,0 +1,8 @@
+<div class="container">
+	<div class="row">
+		<% @user.followers.each do |follower| %>
+		  <%= follower.name %>
+		  <%= link_to '詳細', user_path(user) %>
+		<% end %>
+	</div>
+</div>
