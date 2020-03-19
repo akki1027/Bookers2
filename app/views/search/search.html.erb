@@ -1,0 +1,78 @@
+<div class="container">
+  <div class="row">
+    <table class="table table-hover table-inverse">
+      <% if @range == "1" %>
+      <% @users.each do |user| %>
+        <tbody>
+          <tr>
+            <td><%= attachment_image_tag user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-square pull-left profile-img", fallback: "no_image.jpg", size: "40x40" %></td>
+            <td><%= user.name %></td>
+            <td><% user ||= current_user %>
+                <div class="stats">
+                  <%= link_to user_follow_list_path(user) do %>
+                    <strong id="following" class="stat">
+                      <%= user.follower.count %>
+                    </strong>
+                    following
+                  <% end %>
+                </div>
+            </td>
+            <td><div class="stats">
+                  <%= link_to user_follower_list_path(user) do %>
+                    <strong id="followers" class="stat">
+                    <%= user.followed.count %>
+                    </strong>
+                    followers
+                  <% end %>
+                </div>
+            </td>
+            <td>
+
+                <% unless current_user == user %>
+                    <% if current_user.following?(user) %>
+                    <%= form_for(current_user.follower.find_by(followed_id: user.id), html: { method: :delete }) do |f| %>
+                      <%= f.submit "Unfollow", class: "btn btn-large btn-danger follow-btn" %>
+                    <% end %>
+                <% else %>
+                    <%= form_for(current_user.follower.build(followed_id: user.id)) do |f| %>
+                        <div><%= f.hidden_field :followed_id %></div>
+                      <%= f.submit "Follow", class: "btn btn-large btn-primary follow-btn" %>
+                    <% end %>
+                  <% end %>
+                <% end %>
+
+            </td>
+            <td><%= link_to "Show", user_path(user) %></td>
+          </tr>
+        </tbody>
+      <% end %>
+      <% else %>
+      <% @books.each do |book| %>
+        <tbody>
+          <tr>
+            <td><%= link_to (user_path(book.user)) do %>
+                  <%= attachment_image_tag book.user, :profile_image, :fill, 50, 50, format: 'jpeg', class: "img-square pull-left profile-img", fallback: "no_image.jpg", size: "40x40" %>
+                <% end %></td>
+            <td><%= link_to book.title, book_path(book) %></td>
+            <td><%= book.body %></td>
+            <td><% if book.favorited_by?(current_user) %>
+                  <%= link_to book_favorites_path(book), method: :delete do %>
+                    <i class="far fa-heart" aria-hidden="true" style="color: red;"></i>
+                    <%= book.favorites.count %>
+                  <% end %>
+                <% else %>
+                  <%= link_to book_favorites_path(book), method: :post do %>
+                    <i class="far fa-heart" aria-hidden="true"></i>
+                    <%= book.favorites.count %>
+                  <% end %>
+              <% end %>
+            </td>
+            <td><h5>コメント数 : <%= book.post_comments.count %></h5>
+            </td>
+          </tr>
+        </tbody>
+      <% end %>
+      <% end %>
+    </table>
+  </div>
+</div>

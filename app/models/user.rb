@@ -36,4 +36,20 @@ class User < ApplicationRecord
   def unfollow!(other_user)
     follower.find_by(followed_id: other_user.id).destroy
   end
+
+
+
+  def self.search(method,search)
+                if method == "forward_match"
+                        @users = User.where("name LIKE?","#{search}%")
+                elsif method == "backward_match"
+                        @users = User.where("name LIKE?","%#{search}")
+                elsif method == "perfect_match"
+                        @users = User.where("name LIKE?","#{search}")
+                elsif method == "partial_match"
+                        @users = User.where("name LIKE?","%#{search}%")
+                else
+                        @users = User.all
+                end
+    end
 end
