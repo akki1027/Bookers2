@@ -1,0 +1,15 @@
+
+
+								<tr id="comment-<%= post_comment.id %>">
+									<td>
+										<strong><%= post_comment.user.name %></strong>
+									</td>
+									<td>
+										<%= post_comment.comment %>
+									</td>
+									<td>
+										<% if post_comment.user == current_user %>
+											<%= link_to "削除", book_post_comments_path(post_comment.book_id,id: post_comment.id), method: :delete, remote: true,"data-confirm" => "本当に削除しますか？", class:"btn-sm btn-danger" %>
+										<% end %>
+									</td>
+								</tr>

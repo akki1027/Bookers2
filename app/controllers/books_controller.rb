@@ -7,10 +7,9 @@ class BooksController < ApplicationController
   end
 
   def show
-  	@book_find = Book.find(params[:id])
-  	@book = Book.new
+  	@book = Book.find(params[:id])
   	# 変更した
-  	@user = @book_find.user
+  	@user = @book.user
     @post_comment = PostComment.new
   end
 

@@ -21,7 +21,7 @@
 // alert(title);
 
 // $(function(){
-// 	$('.jquery').on('click', function(){
+// 	$('.far').on('click', function(){
 // 		$(this).css('color','red');
 // 	});
 // });
