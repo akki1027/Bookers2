@@ -17,6 +17,7 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require_tree .
+//= require jquery.jpostal
 // var title = "javascriptが使えました";
 // alert(title);
 
