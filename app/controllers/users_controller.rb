@@ -25,6 +25,7 @@ class UsersController < ApplicationController
   	@user = User.find(params[:id])
   	@book = Book.new
   	@books = @user.books
+    Dotenv.load
   end
 
   def follow_list

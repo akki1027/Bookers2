@@ -25,6 +25,13 @@ class User < ApplicationRecord
   validates :name, presence: true, length: {minimum: 2, maximum: 20}
   validates :introduction, length: {maximum: 50}
 
+  geocoded_by :address
+  after_validation :geocode, if: :address_changed?
+
+  def address
+    "#{self.postcode}" + "#{self.prefecture_code}" + "#{self.address_city}" + "#{self.address_street}" + "#{self.address_building}"
+  end
+
   include JpPrefecture
   jp_prefecture :prefecture_code
 

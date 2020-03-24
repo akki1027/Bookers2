@@ -2,7 +2,7 @@
   <div class="container">
     <h2>Sign up</h2>
 
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
       <%= render "devise/shared/error_messages", resource: resource %>
 
 <!-- 名前入力欄を追加 -->
@@ -32,10 +32,10 @@
 
       <h2>Your address</h2>
       <h4>zip code</h4>
-      <%= f.text_field :postcode %>
+      <%= f.text_field :postcode, label: false %>
 
-      <h4>prefecture</h4>
-      <%= f.text_field :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県' %><br>
+      <h4>Prefecture</h4>
+      <%= f.input :prefecture_code, collection: JpPrefecture::Prefecture.all, :value_method => :name, include_blank: '都道府県', label: false %>
 
       <h4>city</h4>
       <%= f.text_field :address_city %>

@@ -78,3 +78,5 @@ gem "refile-mini_magick"
 gem "jquery-rails"
 gem 'jp_prefecture'
 gem 'simple_form'
+gem 'dotenv-rails'
+gem 'geocoder'
