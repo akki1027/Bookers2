@@ -1,0 +1,6 @@
+										<%= link_to user_follow_list_path(user, remote: true) do %>
+										    <strong id="following" class="stat">
+										    	<%= user.follower.count %>
+										    </strong>
+										    following
+										<% end %>
