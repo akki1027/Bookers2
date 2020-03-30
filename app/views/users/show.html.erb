@@ -53,18 +53,9 @@
 			}
 			</style>
 
-			<script>
-			function initMap(){
-			  let map = new google.maps.Map(document.getElementById('map'), {
-			  center: {lat: -34.397, lng: 150.644},
-			  zoom: 8
-			  });
-			}
-			</script>
-
-			<!-- <script type="text/javascript">
+ 			<script type="text/javascript">
 			  function initMap() {
-			#latitude,longitudeから位置を特定
+			// #latitude,longitudeから位置を特定
 			    var test ={lat: <%= @user.latitude %>, lng: <%= @user.longitude %>};
 			    var map = new google.maps.Map(document.getElementById('map'), {
 			              zoom: 15,
@@ -78,7 +69,7 @@
 			      content: contentString
 			    });
 
-			 #Map上の指定した位置にピンを挿して表示する
+			 // #Map上の指定した位置にピンを挿して表示する
 			    var marker = new google.maps.Marker({
 			                  position:test,
 			                  map: map,
@@ -89,7 +80,7 @@
 			       infowindow.open(map, marker);
 			     });
 			  }
-			</script> -->
+			</script>
 
 			<script src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['KEY'] %>&callback=initMap" async defer></script>
 		</div>
